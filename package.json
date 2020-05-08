@@ -1,0 +1,33 @@
+{
+  "name": "movies-db-reactjs",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dneposeda/movies-db-reactjs.git"
+  },
+  "author": "Denis Tivikov <den.neposeda@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dneposeda/movies-db-reactjs/issues"
+  },
+  "homepage": "https://github.com/dneposeda/movies-db-reactjs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "jest": "^26.0.1",
+    "webpack": "^4.43.0"
+  }
+}
