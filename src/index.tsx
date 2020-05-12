@@ -1,7 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import TestFile from "./test-file";
+import './styles/styles.scss';
 
-const element = React.createElement('h1', {className: 'title'}, `I'm React`);
+const test = new TestFile();
+console.log(test.copies);
+
+const element = React.createElement('h1', {className: 'title'}, `I'm React.CreateElement`);
 // ReactDOM.render(element, document.getElementById('root'));
 
 

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "sourceMap": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    //    "outDir": "./dist/",
+    //    "noImplicitAny": true,
+    //    "module": "esnext",
+    //    "allowJs": true
+//    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules"]
+}
