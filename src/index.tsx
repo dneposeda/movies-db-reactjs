@@ -1,41 +1,100 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TestFile from "./test-file";
 import './styles/styles.scss';
+import { TypeNameBtnGroups } from './enum/enum'
 
-const test = new TestFile();
-console.log(test.copies);
+// Import Components
+import Header from "./components/header/Header";
+import FindMovie from "./components/findMovie/FindMovie";
+import FilterSort from "./components/controls/filterSort/FilterSort";
+import ListFilms from "./components/listFilms/ListFilms";
+import Footer from "./components/footer/Footer";
+import ErrorBoundary from './components/errorBoundary/errorBoundary';
 
-const element = React.createElement('h1', {className: 'title'}, `I'm React.CreateElement`);
-// ReactDOM.render(element, document.getElementById('root'));
+class App extends React.Component {
+    state = {
+        films: [
+            {
+                id: 2,
+                title: 'Reservoir Reservoir',
+                year: 2019,
+                genre: 'Oscar winning Movie',
+                img: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg'
+            },
+            {
+                id: 3,
+                title: 'Resedogs rvoir dogs',
+                year: 2011,
+                genre: 'Oscar winning Movie',
+                img: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg'
+            },
+            {
+                id: 4,
+                title: 'Reservoir dogs',
+                year: 1987,
+                genre: 'Oscar winning Movie',
+                img: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg'
+            },
+            {
+                id: 6,
+                title: 'Reservoir dogs',
+                year: 2020,
+                genre: 'Oscar winning Movie',
+                img: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg'
+            },
+            {
+                id: 1,
+                title: 'Reservoir dogs',
+                year: 2010,
+                genre: 'Oscar winning Movie',
+                img: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg'
+            },
+            {
+                id: 5,
+                title: 'Reservoir dogs',
+                year: 1991,
+                genre: 'Oscar winning Movie',
+                img: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg'
+            },
+        ]
+    }
 
-
-class Test extends React.Component {
-    render() { return <h1>Привет Component</h1>; }
+    render() {
+        return (
+            <>
+                <ErrorBoundary>
+                    <div className="wrapper-header">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col">
+                                    <Header/>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <FindMovie/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="wrapper-sort">
+                        <div className="container">
+                            <div className="row justify-content-end">
+                                <div className="col-auto ml-auto">
+                                    <div className="sort">
+                                        <FilterSort type={ TypeNameBtnGroups.SORT } />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ListFilms films={ this.state.films } />
+                    <Footer />
+                </ErrorBoundary>
+            </>
+        );
+    }
 }
-// ReactDOM.render(<Test />, document.getElementById('b'));
 
 
-class Test2 extends React.PureComponent {
-    render() { return <h1>Привет, PureComponent</h1>; }
-}
-// ReactDOM.render(<Test2 />, document.getElementById('c'));
-
-
-function Element2() {
-    return (<h1>Hello function</h1>);
-};
-// ReactDOM.render(<Element2 />, document.getElementById('a'));
-
-
-function All() {
-    return (
-        <ul>
-            <li> { element } </li>
-            <li> <Test2 /> </li>
-            <li> <Element2 /> </li>
-            <li> <Test /> </li>
-        </ul>
-    );
-};
-ReactDOM.render(<All />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

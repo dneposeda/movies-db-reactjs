@@ -29,6 +29,30 @@ module.exports = () => {
                     exclude: /node_modules/,
                     loader: 'ts-loader',
                 },
+                {
+                    test: /\.(woff|woff2|eot|ttf|otf)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'fonts/'
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /\.(png|jpe?g|gif|webp)$/i,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'images/'
+                            }
+                        }
+                    ]
+                },
             ]
         },
     }
