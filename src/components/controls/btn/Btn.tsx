@@ -1,33 +1,22 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import classNames from 'classnames';
 
-//
-
 interface ButtonProps {
-    readonly title: string,
+    handleClick: () => void,
+    title: string,
+    cls?: string[],
+    active?: boolean
 }
 type Component = FC<ButtonProps>;
 
-const Btn: Component = ({ title }) => {
-
-    // start temp
-    const classes = classNames(
-        'btn',
-        'filter-sort__btn',
-        {
-            ['active']: title === 'title' || title === 'release date',
-        },
-    );
-    // end temp
-
-    return (
-        <button
-            type="button"
-            className={ classes }
-        >
-            { title }
-        </button>
-    )
-}
+const Btn: Component = ({ title , cls, active, handleClick}) => (
+    <button
+        type="button"
+        className={ classNames(cls, { active: active }) }
+        onClick={ () => handleClick() }
+    >
+        { title }
+    </button>
+)
 
 export default Btn;

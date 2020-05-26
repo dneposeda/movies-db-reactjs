@@ -3,4 +3,14 @@ enum TypeNameBtnGroups {
     SEARCH = 'search',
 }
 
-export { TypeNameBtnGroups };
+enum TypeSearch {
+    TITLE = 'title',
+    GENRE = 'genre',
+}
+
+enum TypeSort {
+    DATE = 'release date',
+    RATING = 'rating',
+}
+
+export { TypeNameBtnGroups, TypeSearch, TypeSort };

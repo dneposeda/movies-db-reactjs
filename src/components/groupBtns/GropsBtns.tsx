@@ -1,15 +1,31 @@
-import React, { FC } from 'react';
+import React, {FC, useContext} from 'react';
 import Btn from "../controls/btn/Btn";
+import {IBtn} from "../../interfaces/interfaces";
+import Context from "../../context";
 
 interface Props {
-    readonly btnNames: string[];
+    btns: IBtn[];
+    cls?: string[],
+    group?: string,
 }
 type Component = FC<Props>;
 
-const GropBtns: Component = ({ btnNames }) => (
+const GropBtns: Component = ({ btns, cls, group }) => {
+    const { handleClickBtn } = useContext(Context);
+
+    return (
         <div className="btn-group" role="group">
-            { btnNames.map( (btnName: string, index: number) => <Btn title={ btnName } key={ index } />)}
+            { btns.map( ( { id, title, active } ) => (
+                <Btn
+                    key={ id }
+                    title={ title }
+                    cls={ cls }
+                    handleClick={ () => handleClickBtn(id, group) }
+                    active={ active }
+                />
+            ))}
         </div>
     )
+}
 
 export default GropBtns;
