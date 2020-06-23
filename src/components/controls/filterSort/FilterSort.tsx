@@ -1,27 +1,28 @@
 import React, {FC} from "react";
-import GropsBtn from "../../groupBtns/GropsBtns";
-import { TypeNameBtnGroups } from '../../../enum/enum';
+import {TypeNameBtnGroups} from '../../../enum/enum';
+import {IBtn} from "../../../interfaces/interfaces";
+import GropBtns from "../../groupBtns/GropsBtns";
 
 interface Props {
-    type: TypeNameBtnGroups
+    type: { titleGroup: TypeNameBtnGroups, btns: IBtn[] }
 }
 type Component = FC<Props>;
 
 const FilterSort: Component = ({ type }) => {
-    const btnNames = {
-        sort: ['release date', 'rating'],
-        search: ['title', 'gengre'],
-    };
+    const { titleGroup, btns } = type;
+    const classesBtn = ['btn', 'filter-sort__btn'];
 
     return (
-        <>
-            <div className="filter-sort">
-                <div className="filter-sort__title">{ type } by</div>
-                <div className="filter-sort__controls">
-                    <GropsBtn btnNames={ btnNames[type] } />
-                </div>
+        <div className="filter-sort">
+            <div className="filter-sort__title">{ titleGroup } by</div>
+            <div className="filter-sort__controls">
+                <GropBtns
+                    btns={ btns }
+                    cls={ classesBtn }
+                    group={ titleGroup }
+                />
             </div>
-        </>
+        </div>
     );
 }
 
