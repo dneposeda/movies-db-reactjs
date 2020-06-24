@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Btn renders correctly 1`] = `
+<Btn
+  active={true}
+  cls=""
+  handleClick={[Function]}
+  title="release date"
+>
+  <button
+    className="active"
+    onClick={[Function]}
+    type="button"
+  >
+    release date
+  </button>
+</Btn>
+`;

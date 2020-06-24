@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search renders correctly 1`] = `
+<div
+  className="search"
+>
+  <form
+    action=""
+    className="form-group"
+    id="formSearchFilms"
+  >
+    <input
+      className="form-control search__input"
+      placeholder="Search"
+      type="text"
+    />
+    <button
+      className="btn btn-lg search__btn"
+      onClick={[Function]}
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+`;

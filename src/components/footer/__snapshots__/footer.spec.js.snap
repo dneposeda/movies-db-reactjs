@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<Footer>
+  <div
+    className="wrapper-footer"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col d-flex justify-content-center"
+        >
+          <Logo>
+            <div
+              className="logo"
+            >
+              <a
+                className="logo__link"
+                href="/"
+              >
+                <span
+                  className="logo__text"
+                >
+                  <span>
+                    netflix
+                  </span>
+                  roulette
+                </span>
+              </a>
+            </div>
+          </Logo>
+        </div>
+      </div>
+    </div>
+  </div>
+</Footer>
+`;
