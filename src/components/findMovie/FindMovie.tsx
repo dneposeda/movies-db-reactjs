@@ -3,7 +3,7 @@ import Search from "../search/Search";
 import FilterSort from "../controls/filterSort/FilterSort";
 
 const FindMovie = ({ type }) => (
-    <div className="find-movie">
+    <div data-find="findMovie" className="find-movie">
         <div className="find-movie__title">
             Find your movie
         </div>

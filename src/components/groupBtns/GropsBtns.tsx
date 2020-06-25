@@ -1,19 +1,17 @@
 import React, {FC, useContext} from 'react';
 import Btn from "../controls/btn/Btn";
 import {IBtn} from "../../interfaces/interfaces";
-import Context from "../../context";
+
 
 interface Props {
     btns: IBtn[];
     cls?: string[],
     group?: string,
+    handleClickBtn?: (id?, group?) => {},
 }
 type Component = FC<Props>;
 
-const GropBtns: Component = ({ btns, cls, group }) => {
-    const { handleClickBtn } = useContext(Context);
-
-    return (
+const GropBtns: Component = ({ btns, cls, group, handleClickBtn }) => (
         <div className="btn-group" role="group">
             { btns.map( ( { id, title, active } ) => (
                 <Btn
@@ -26,6 +24,5 @@ const GropBtns: Component = ({ btns, cls, group }) => {
             ))}
         </div>
     )
-}
 
 export default GropBtns;

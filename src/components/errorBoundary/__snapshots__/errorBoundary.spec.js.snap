@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary renders correctly 1`] = `""`;
+
+exports[`ErrorBoundary renders correctly Error 1`] = `
+<h1>
+  Что-то пошло не так.
+</h1>
+`;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GropBtns renders correctly 1`] = `
+<div
+  className="btn-group"
+  role="group"
+>
+  <Btn
+    active={true}
+    cls={
+      Array [
+        "btn",
+        "filter-sort__btn",
+      ]
+    }
+    handleClick={[Function]}
+    key="1"
+    title="release date"
+  />
+  <Btn
+    active={false}
+    cls={
+      Array [
+        "btn",
+        "filter-sort__btn",
+      ]
+    }
+    handleClick={[Function]}
+    key="2"
+    title="rating"
+  />
+</div>
+`;

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListFilms renders correctly 1`] = `
+<div
+  className="wrapper-main"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <ShortCartFilm
+        film={
+          Object {
+            "genre": "Oscar winning Movie",
+            "id": 2,
+            "img": "https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg",
+            "title": "Reservoir Reservoir",
+            "year": 2019,
+          }
+        }
+        key="2"
+      />
+      <ShortCartFilm
+        film={
+          Object {
+            "genre": "Oscar winning Movie",
+            "id": 3,
+            "img": "https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg",
+            "title": "Resedogs rvoir dogs",
+            "year": 2011,
+          }
+        }
+        key="3"
+      />
+    </div>
+  </div>
+</div>
+`;
