@@ -3,4 +3,4 @@ node_modules/
 .vscode/
 .git/
 dist/
-/coverage
+cypress/examples/

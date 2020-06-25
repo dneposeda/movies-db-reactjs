@@ -7,10 +7,10 @@ exports[`Search renders correctly 1`] = `
   <form
     action=""
     className="form-group"
-    id="formSearchFilms"
   >
     <input
       className="form-control search__input"
+      data-search="searchFilms"
       placeholder="Search"
       type="text"
     />

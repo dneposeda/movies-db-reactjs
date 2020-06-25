@@ -1,7 +1,6 @@
 import React from 'react';
 import Btn from './Btn';
 import { TypeSort } from '../../../enum/enum'
-import { mount } from 'enzyme';
 
 const mockBnt = {
     title: TypeSort.DATE,
@@ -12,7 +11,7 @@ const mockBnt = {
 
 describe('Btn', () => {
     it('renders correctly', () => {
-        const component = mount (
+        const component = shallow (
             <Btn
                 title={mockBnt.title}
                 cls={mockBnt.cls}

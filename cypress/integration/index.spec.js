@@ -6,19 +6,19 @@ context("Actions", () => {
     });
 
     it('Search input', () => {
-        cy.get('#formSearchFilms input')
-            .type('best films best films best films best films', { delay: 100 })
+        cy.get('[data-search="searchFilms"]')
+            .type('best films best films best films best films', { delay: 50 })
             .should('have.value', 'best films best films best films best films')
-            .get('#formSearchFilms button.btn.btn-lg.search__btn')
+            .get('[data-search="searchFilmsSubmit"]')
             .click()
     });
     it('Search by', () => {
-        cy.get('.find-movie .btn.filter-sort__btn')
+        cy.get('[data-find="findMovie"] .btn.filter-sort__btn')
             .click({multiple: true})
             .should('have.class', 'active')
     });
     it('Filter by', () => {
-        cy.get('.sort .btn.filter-sort__btn')
+        cy.get('[data-sort="sortMovie"] .btn.filter-sort__btn')
             .click({multiple: true})
             .prev()
             .should('not.have.class', 'active')

@@ -114,10 +114,8 @@ class App extends Component<{}, MyState> {
                         <div className="container">
                             <div className="row justify-content-end">
                                 <div className="col-auto ml-auto">
-                                    <div className="sort">
-                                        <FilterSort
-                                            type={ this.state.sort }
-                                        />
+                                    <div data-sort="sortMovie" className="sort">
+                                        <FilterSort type={ this.state.sort }/>
                                     </div>
                                 </div>
                             </div>

@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
+    "test-coverage": "jest --coverage",
     "cypress": "cypress open",
     "node-server": "node server.js",
     "start-build": "cross-env NODE_ENV=production webpack --open --config config/webpack.config.js",
