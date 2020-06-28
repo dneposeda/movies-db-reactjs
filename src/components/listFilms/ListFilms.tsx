@@ -7,14 +7,25 @@ interface Props {
 }
 type Component = FC<Props>;
 
-const ListFilms: Component = ({ films }) => (
+const ListFilms: Component = ({ films }) => {
+    const isEmptyFilms = !films?.length;
+    let listFilm;
+
+    if (isEmptyFilms) {
+        listFilm = 'Список пуст';
+    } else {
+        listFilm = films.map((film: IFilm) => <ShortCardFilm film={ film } key={ film.id } />);
+    }
+
+    return (
         <div className="wrapper-main">
             <div className="container">
                 <div className="row">
-                    { films.map((film: IFilm) => <ShortCardFilm film={ film } key={ film.id }/>) }
+                    { listFilm }
                 </div>
             </div>
         </div>
     )
+}
 
 export default ListFilms;

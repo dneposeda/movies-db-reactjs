@@ -16,7 +16,7 @@ const mockBtns = {
 
 describe('GropBtns', () => {
     it('renders correctly', () => {
-        const component = shallow (
+        const component = mount (
             <GropBtns
                 btns={ mockBtns.btns }
                 cls={ mockBtns.classesBtn }
