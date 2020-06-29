@@ -4,10 +4,11 @@ import sortByRating from './sortByRating';
 import sortByDate from './sortByDate';
 // import searchFilms from './123searchFilms';
 import searchFilmsType from './searchFilmsType';
+import filmSelected from './filmSelected';
 
 const rootReducer = combineReducers({
     films,
-    // searchFilms,
+    filmSelected,
     // selectedFilm: SelectedFilm,
     sortByRating,
     sortByDate,

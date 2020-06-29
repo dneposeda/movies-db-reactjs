@@ -7,10 +7,10 @@ export const sortByDate = (films) => {
     }
 };
 function compare(a, b) {
-    if (a.release_date > b.release_date) {
+    if (a.release_date < b.release_date) {
         return 1;
     }
-    if (a.release_date < b.release_date) {
+    if (a.release_date > b.release_date) {
         return -1;
     }
     return 0;

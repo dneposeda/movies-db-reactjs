@@ -8,4 +8,5 @@ export enum actionTypes {
     FILM_SELECTED = 'FILM_SELECTED',
     SEARCH_FILMS = 'SEARCH_FILMS',
     SET_TYPE_SEARCH = 'SET_TYPE_SEARCH',
+    FETCH_FILM = 'FETCH_FILM',
 }

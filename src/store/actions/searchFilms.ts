@@ -3,7 +3,6 @@ import { URL } from './action';
 
 export const searchFilms = (searchText, searchBy) => {
     if (!searchText) return;
-    console.log('searchFilms', searchText, searchBy);
 
     return (
         (dispatch) => (

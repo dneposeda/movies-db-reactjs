@@ -12,7 +12,6 @@ export const fetchFilms = () => (
             })
             .then(response => response.json())
             .then(response => {
-                console.log("filmList: ", response);
                 dispatch({
                     type: actionTypes.FETCH_FILMS,
                     payload: response.data
@@ -20,3 +19,23 @@ export const fetchFilms = () => (
             })
     )
 )
+
+export const fetchFilmData = (id) => {
+    return (
+        (dispatch) => (
+            fetch(
+                `${URL}/movies/${ id }`,
+                {
+                    method: 'GET',
+                    headers: new Headers({ 'content-type': 'application/json' })
+                })
+                .then(response => response.json())
+                .then(response => {
+                    dispatch({
+                        type: actionTypes.FETCH_FILM,
+                        payload: response
+                    })
+                })
+        )
+    )
+}
