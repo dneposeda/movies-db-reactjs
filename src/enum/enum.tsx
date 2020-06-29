@@ -1,16 +1,24 @@
-enum TypeNameBtnGroups {
+export enum TypeNameBtnGroups {
     SORT = 'sort',
     SEARCH = 'search',
 }
 
-enum TypeSearch {
+export enum TypeSearch {
     TITLE = 'title',
     GENRE = 'genre',
 }
 
-enum TypeSort {
-    DATE = 'release date',
-    RATING = 'rating',
+export enum SearchButtonNames {
+    TITLE = 'title',
+    GENRE = 'genre',
 }
 
-export { TypeNameBtnGroups, TypeSearch, TypeSort };
+export enum TypeSort {
+    DATE = 'release_date',
+    RATING = 'vote_average',
+}
+
+export enum SortButtonNames {
+    DATE = 'release date',
+    RATING = 'rating'
+}

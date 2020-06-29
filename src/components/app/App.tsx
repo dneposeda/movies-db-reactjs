@@ -1,60 +1,26 @@
 import React, {Component} from "react";
 import '../../styles/styles.scss';
-import {TypeNameBtnGroups, TypeSearch, TypeSort} from '../../enum/enum'
+import {TypeNameBtnGroups, TypeSearch, TypeSort, SearchButtonNames, SortButtonNames} from '../../enum/enum'
 import { connect } from "react-redux";
 import { fetchFilms } from '../../store/actions/action';
-
+import { sortFilms } from '../../store/actions/sortFilms';
+import { setSearchCriteria } from '../../store/actions/setSearchCriteria';
 // Import Components
 import Header from "../header/Header";
 import FindMovie from "../findMovie/FindMovie";
 import FilterSort from "../controls/filterSort/FilterSort";
 import ListFilms from "../listFilms/ListFilms";
 import Footer from "../footer/Footer";
-import Context from "../../context";
 
-type MyState = { sort: any, search: any }
-type MyProps = { films: any[], fetchFilms: any }
+type MyProps = { films: any[], fetchFilms: any, sortFilms: any, setSearchCriteria: any }
 
-class App extends Component<MyProps, MyState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sort: {
-                titleGroup: TypeNameBtnGroups.SORT,
-                btns: [
-                    { id: 1, title: TypeSort.DATE, active: true },
-                    { id: 2, title: TypeSort.RATING, active: false },
-                ]
-            },
-            search: {
-                titleGroup: TypeNameBtnGroups.SEARCH,
-                btns: [
-                    { id: 3, title: TypeSearch.TITLE, active: true },
-                    { id: 4, title: TypeSearch.GENRE, active: false },
-                ]
-            }
-        };
-
-        this.handleClickBtn = this.handleClickBtn.bind(this);
-    }
-
-    handleClickBtn(id: number, group: TypeNameBtnGroups) {
-        const btns = this.state[group].btns.map( btn => {
-            btn.id === id ? btn.active = true : btn.active = false;
-            return btn;
-        });
-        group === TypeNameBtnGroups.SORT && this.setState({ sort: { titleGroup: this.state[group].titleGroup, btns}})
-        group === TypeNameBtnGroups.SEARCH && this.setState({ search: { titleGroup: this.state[group].titleGroup, btns}})
-    }
-
+class App extends Component<MyProps> {
     componentDidMount() {
         this.props.fetchFilms();
     };
 
     render() {
         return (
-            <Context.Provider value={
-                { handleClickBtn: this.handleClickBtn } }>
             <>
                 <div className="wrapper-header">
                     <div className="container">
@@ -65,7 +31,20 @@ class App extends Component<MyProps, MyState> {
                         </div>
                         <div className="row">
                             <div className="col">
-                                <FindMovie type={ this.state.search }/>
+                                <FindMovie
+                                  title={TypeNameBtnGroups.SEARCH}
+                                  btns={[
+                                    {
+                                      id: TypeSearch.TITLE,
+                                      title: SearchButtonNames.TITLE,
+                                    },
+                                    {
+                                      id: TypeSearch.GENRE,
+                                      title: SearchButtonNames.GENRE,
+                                    },
+                                  ]}
+                                  onFilter={this.props.setSearchCriteria}
+                                />
                             </div>
                         </div>
                     </div>
@@ -75,7 +54,19 @@ class App extends Component<MyProps, MyState> {
                         <div className="row justify-content-end">
                             <div className="col-auto ml-auto">
                                 <div data-sort="sortMovie" className="sort">
-                                    <FilterSort type={ this.state.sort }/>
+                                    <FilterSort
+                                      onFilter={this.props.sortFilms}
+                                      title={TypeNameBtnGroups.SORT}
+                                      btns={[
+                                        {
+                                          id: TypeSort.DATE,
+                                          title: SortButtonNames.DATE
+                                        },
+                                        {
+                                          id: TypeSort.RATING,
+                                          title: SortButtonNames.RATING,
+                                        },
+                                      ]} />
                                 </div>
                             </div>
                         </div>
@@ -84,20 +75,21 @@ class App extends Component<MyProps, MyState> {
                 <ListFilms films={ this.props.films } />
                 <Footer />
             </>
-            </Context.Provider>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        films: state.films.films
+        films: state.films
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return ({
-        fetchFilms: () => { dispatch(fetchFilms()) }
+        fetchFilms: () => dispatch(fetchFilms()),
+        sortFilms: sortBy => dispatch(sortFilms(sortBy)),
+        setSearchCriteria: searchCriteria => dispatch(setSearchCriteria(searchCriteria)),
     });
 }
 

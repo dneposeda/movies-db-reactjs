@@ -1,28 +1,26 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import {TypeNameBtnGroups} from '../../../enum/enum';
-import {IBtn} from "../../../interfaces/interfaces";
+import {TBtn} from "../../../interfaces/interfaces";
 import GropBtns from "../../groupBtns/GropsBtns";
-import Context from "../../../context";
 
 interface Props {
-    type: { titleGroup: TypeNameBtnGroups, btns: IBtn[] }
+    btns: TBtn[],
+    title: TypeNameBtnGroups,
+    onFilter: (filterBy: TBtn['id']) => void,
 }
 type Component = FC<Props>;
 
-const FilterSort: Component = ({ type }) => {
-    const { titleGroup, btns } = type;
+const FilterSort: Component = ({ btns, title, onFilter }) => {
     const classesBtn = ['btn', 'filter-sort__btn'];
-    const { handleClickBtn } = useContext(Context);
 
     return (
         <div className="filter-sort">
-            <div className="filter-sort__title">{ titleGroup } by</div>
+            <div className="filter-sort__title">{`${title} by`}</div>
             <div className="filter-sort__controls">
                 <GropBtns
                     btns={ btns }
                     cls={ classesBtn }
-                    group={ titleGroup }
-                    handleClickBtn={ handleClickBtn }
+                    onClick={ onFilter }
                 />
             </div>
         </div>

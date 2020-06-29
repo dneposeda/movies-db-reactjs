@@ -52,7 +52,7 @@ class Search extends Component<MyProps, MyState> {
 
 const mapStateToProps = (state) => {
     return {
-        searchBy: state.searchFilmsType.searchType,
+        searchBy: state.searchCriteria,
     };
 }
 

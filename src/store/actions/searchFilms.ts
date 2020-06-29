@@ -8,7 +8,7 @@ export const searchFilms = (searchText, searchBy) => {
     return (
         (dispatch) => (
             fetch(
-                `${URL}/movies?search=${ searchText }&searchBy=${searchBy}`,
+                `${URL}/movies?search=${searchText}&searchBy=${searchBy}`,
                 {
                     method: 'GET',
                     headers: new Headers({ 'content-type': 'application/json' })
