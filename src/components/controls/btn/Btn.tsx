@@ -13,7 +13,7 @@ const Btn: Component = ({ title , cls, active, onClick}) => (
     <button
         type="button"
         className={ classNames(cls, { active: active }) }
-        onClick={onClick}
+        onClick={ onClick }
     >
         { title }
     </button>

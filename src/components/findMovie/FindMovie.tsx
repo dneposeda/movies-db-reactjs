@@ -11,7 +11,11 @@ const FindMovie = ({ title, btns, onFilter }) => (
             <Search/>
         </div>
         <div className="find-movie__search-by">
-            <FilterSort title={title} btns={btns} onFilter={onFilter} />
+            <FilterSort
+                title={title}
+                btns={btns}
+                onFilter={onFilter}
+            />
         </div>
     </div>
 )

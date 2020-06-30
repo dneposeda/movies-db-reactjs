@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { searchFilms } from "../../store/actions/searchFilms";
 
-
 type MyState = { value: any}
 type MyProps = { searchBy: any, searchFilms: any }
 

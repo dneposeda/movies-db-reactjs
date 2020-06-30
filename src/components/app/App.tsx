@@ -32,18 +32,18 @@ class App extends Component<MyProps> {
                         <div className="row">
                             <div className="col">
                                 <FindMovie
-                                  title={TypeNameBtnGroups.SEARCH}
-                                  btns={[
-                                    {
-                                      id: TypeSearch.TITLE,
-                                      title: SearchButtonNames.TITLE,
-                                    },
-                                    {
-                                      id: TypeSearch.GENRE,
-                                      title: SearchButtonNames.GENRE,
-                                    },
-                                  ]}
-                                  onFilter={this.props.setSearchCriteria}
+                                    title={TypeNameBtnGroups.SEARCH}
+                                    btns={[
+                                        {
+                                            id: TypeSearch.TITLE,
+                                            title: SearchButtonNames.TITLE,
+                                        },
+                                        {
+                                            id: TypeSearch.GENRE,
+                                            title: SearchButtonNames.GENRE,
+                                        },
+                                    ]}
+                                    onFilter={this.props.setSearchCriteria}
                                 />
                             </div>
                         </div>
@@ -55,18 +55,19 @@ class App extends Component<MyProps> {
                             <div className="col-auto ml-auto">
                                 <div data-sort="sortMovie" className="sort">
                                     <FilterSort
-                                      onFilter={this.props.sortFilms}
-                                      title={TypeNameBtnGroups.SORT}
-                                      btns={[
-                                        {
-                                          id: TypeSort.DATE,
-                                          title: SortButtonNames.DATE
-                                        },
-                                        {
-                                          id: TypeSort.RATING,
-                                          title: SortButtonNames.RATING,
-                                        },
-                                      ]} />
+                                        title={TypeNameBtnGroups.SORT}
+                                        btns={[
+                                            {
+                                                id: TypeSort.DATE,
+                                                title: SortButtonNames.DATE
+                                            },
+                                            {
+                                                id: TypeSort.RATING,
+                                                title: SortButtonNames.RATING,
+                                            },
+                                        ]}
+                                        onFilter={this.props.sortFilms}
+                                    />
                                 </div>
                             </div>
                         </div>
