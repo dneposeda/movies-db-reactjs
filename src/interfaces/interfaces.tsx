@@ -1,9 +1,6 @@
-import {TypeSearch, TypeSort} from "../enum/enum";
+import {TypeSearch, TypeSort, SortButtonNames, SearchButtonNames} from "../enum/enum";
 
-interface IBtn {
-    id: number,
-    title: TypeSort | TypeSearch,
-    active?: boolean,
+export type TBtn = {
+  id: TypeSort | TypeSearch,
+  title: SortButtonNames | SearchButtonNames,
 }
-
-export { IBtn }

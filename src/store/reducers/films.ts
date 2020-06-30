@@ -1,15 +1,16 @@
+import orderBy from 'lodash.orderby';
 import { actionTypes } from "../actions/actionTypes";
 
-export const initialState = {
-    films: [],
-}
+export const initialState = [];
 
 const films = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.FETCH_FILMS:
-            return { ...state, films: action.payload };
+            return action.payload;
         case actionTypes.SEARCH_FILMS:
-                return { ...state, films: action.payload };
+            return action.payload;
+        case actionTypes.SORT_FILMS:
+            return orderBy(state, action.payload, 'desc');
         default:
             return state;
     }

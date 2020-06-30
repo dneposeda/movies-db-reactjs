@@ -5,10 +5,7 @@ import Btn from '../controls/btn/Btn';
 import { TypeNameBtnGroups, TypeSort } from '../../enum/enum'
 
 const mockBtns = {
-    btns: [
-        { id: 1, title: TypeSort.DATE, active: true },
-        { id: 2, title: TypeSort.RATING, active: false },
-    ],
+    btns: [ TypeSort.DATE, TypeSort.RATING ],
     classesBtn: ['btn', 'filter-sort__btn'],
     titleGroup: TypeNameBtnGroups.SORT,
     handleClickBtn: () => {},
