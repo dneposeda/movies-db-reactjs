@@ -3,7 +3,7 @@ import ShortCardFilm from '../shortCardFilm/ShortCardFilm';
 import { IFilm } from "../../interfaces/Flims.interface";
 
 interface Props {
-    readonly films: IFilm[],
+    films: IFilm[],
 }
 type Component = FC<Props>;
 

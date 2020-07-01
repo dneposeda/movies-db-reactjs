@@ -12,11 +12,12 @@ import FilterSort from "../controls/filterSort/FilterSort";
 import ListFilms from "../listFilms/ListFilms";
 import Footer from "../footer/Footer";
 
-type MyProps = { films: any[], fetchFilms: any, sortFilms: any, setSearchCriteria: any }
+type MyProps = { films: any[], fetchFilms: any, sortFilms: any, searchCriteria: any, setSearchCriteria: any }
 
 class App extends Component<MyProps> {
     componentDidMount() {
         this.props.fetchFilms();
+        this.props.setSearchCriteria('title');
     };
 
     render() {
@@ -82,7 +83,8 @@ class App extends Component<MyProps> {
 
 const mapStateToProps = (state) => {
     return {
-        films: state.films
+        films: state.films,
+        searchCriteria: state.searchCriteria
     };
 }
 

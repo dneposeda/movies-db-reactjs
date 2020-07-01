@@ -6,7 +6,7 @@ import '../../images/no-img.png';
 import { Link } from "react-router-dom";
 
 interface Props {
-    readonly film: IFilm,
+    film: IFilm,
 }
 type Component = FC<Props>;
 

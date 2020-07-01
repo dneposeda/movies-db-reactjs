@@ -5,7 +5,7 @@ export enum TypeNameBtnGroups {
 
 export enum TypeSearch {
     TITLE = 'title',
-    GENRE = 'genre',
+    GENRE = 'genres',
 }
 
 export enum SearchButtonNames {
