@@ -1,6 +1,7 @@
 import { actionTypes } from "../actions/actionTypes";
+import { TypeSearch } from "../../common/enum/enum";
 
-const initialState = 'title';
+const initialState = TypeSearch.TITLE;
 
 export default (state = initialState, action) => {
     switch(action.type) {

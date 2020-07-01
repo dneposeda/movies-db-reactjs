@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import classNames from 'classnames';
 
-interface ButtonProps {
+type ButtonProps = {
     title: string,
     cls?: string[],
     active?: boolean,
@@ -9,7 +9,7 @@ interface ButtonProps {
 }
 type Component = FC<ButtonProps>;
 
-const Btn: Component = ({ title , cls, active, onClick}) => (
+const Button: Component = ({ title , cls, active, onClick}) => (
     <button
         type="button"
         className={ classNames(cls, { active: active }) }
@@ -19,4 +19,4 @@ const Btn: Component = ({ title , cls, active, onClick}) => (
     </button>
 )
 
-export default Btn;
+export default Button;

@@ -1,4 +1,5 @@
 import { actionTypes } from "./actionTypes";
+import { handleErrors } from "./common";
 
 export const URL = 'https://reactjs-cdp.herokuapp.com';
 
@@ -10,6 +11,7 @@ export const fetchFilms = () => (
                 method: 'GET',
                 headers: new Headers({ 'content-type': 'application/json' })
             })
+            .then(handleErrors)
             .then(response => response.json())
             .then(response => {
                 dispatch({
@@ -17,25 +19,26 @@ export const fetchFilms = () => (
                     payload: response.data
                 })
             })
+            .catch(() => console.log('Что-то пошло не так'))
     )
 )
 
-export const fetchFilmData = (id) => {
-    return (
-        (dispatch) => (
-            fetch(
-                `${URL}/movies/${ id }`,
-                {
-                    method: 'GET',
-                    headers: new Headers({ 'content-type': 'application/json' })
+export const fetchFilmData = (id: number) => (
+    (dispatch) => (
+        fetch(
+            `${URL}/movies/${ id }`,
+            {
+                method: 'GET',
+                headers: new Headers({ 'content-type': 'application/json' })
+            })
+            .then(handleErrors)
+            .then(response => response.json())
+            .then(response => {
+                dispatch({
+                    type: actionTypes.FETCH_FILM,
+                    payload: response
                 })
-                .then(response => response.json())
-                .then(response => {
-                    dispatch({
-                        type: actionTypes.FETCH_FILM,
-                        payload: response
-                    })
-                })
-        )
+            })
+            .catch(() => console.log('Что-то пошло не так'))
     )
-}
+)

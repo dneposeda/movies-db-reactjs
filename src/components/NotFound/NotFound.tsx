@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
- const NotFound = () => (
+const NotFound = () => (
     <>
         <div className="wrapper-header">
             <div className="container">

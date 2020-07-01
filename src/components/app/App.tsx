@@ -1,25 +1,34 @@
-import React, {Component} from "react";
-import '../../styles/styles.scss';
-import {TypeNameBtnGroups, TypeSearch, TypeSort, SearchButtonNames, SortButtonNames} from '../../enum/enum'
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { TypeNameBtnGroups, TypeSearch, TypeSort, SearchButtonNames, SortButtonNames } from '../../common/enum/enum'
 import { fetchFilms } from '../../store/actions/action';
 import { sortFilms } from '../../store/actions/sortFilms';
 import { setSearchCriteria } from '../../store/actions/setSearchCriteria';
-// Import Components
-import Header from "../header/Header";
-import FindMovie from "../findMovie/FindMovie";
-import FilterSort from "../controls/filterSort/FilterSort";
-import ListFilms from "../listFilms/ListFilms";
+import MoviesSearch from "../MoviesSearch/MoviesSearch";
+import Filter from "../controls/filter/Filter";
 import Footer from "../footer/Footer";
+import Header from "../header/Header";
+import ListFilms from "../listFilms/ListFilms";
+import '../../styles/styles.scss';
+import { IFilm } from "../../common/interfaces/Flims.interface";
 
-type MyProps = { films: any[], fetchFilms: any, sortFilms: any, setSearchCriteria: any }
+type TAppProps = {
+    films: IFilm[],
+    fetchFilms: () => void,
+    sortFilms: (sortBy: string) => void,
+    searchCriteria: string,
+    setSearchCriteria: (searchCriteria: string) => void
+}
 
-class App extends Component<MyProps> {
+class App extends Component<TAppProps> {
     componentDidMount() {
         this.props.fetchFilms();
+        this.props.setSearchCriteria('title');
     };
 
     render() {
+        const { sortFilms, films, setSearchCriteria } = this.props;
+
         return (
             <>
                 <div className="wrapper-header">
@@ -31,7 +40,7 @@ class App extends Component<MyProps> {
                         </div>
                         <div className="row">
                             <div className="col">
-                                <FindMovie
+                                <MoviesSearch
                                     title={TypeNameBtnGroups.SEARCH}
                                     btns={[
                                         {
@@ -43,7 +52,7 @@ class App extends Component<MyProps> {
                                             title: SearchButtonNames.GENRE,
                                         },
                                     ]}
-                                    onFilter={this.props.setSearchCriteria}
+                                    onFilter={ setSearchCriteria }
                                 />
                             </div>
                         </div>
@@ -54,9 +63,9 @@ class App extends Component<MyProps> {
                         <div className="row justify-content-end">
                             <div className="col-auto ml-auto">
                                 <div data-sort="sortMovie" className="sort">
-                                    <FilterSort
-                                        title={TypeNameBtnGroups.SORT}
-                                        btns={[
+                                    <Filter
+                                        title={ TypeNameBtnGroups.SORT }
+                                        btns={ [
                                             {
                                                 id: TypeSort.DATE,
                                                 title: SortButtonNames.DATE
@@ -65,34 +74,31 @@ class App extends Component<MyProps> {
                                                 id: TypeSort.RATING,
                                                 title: SortButtonNames.RATING,
                                             },
-                                        ]}
-                                        onFilter={this.props.sortFilms}
+                                        ] }
+                                        onFilter={ sortFilms }
                                     />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <ListFilms films={ this.props.films } />
+                <ListFilms films={ films } />
                 <Footer />
             </>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        films: state.films
-    };
-}
+const mapStateToProps = (state) => ({
+        films: state.films,
+        searchCriteria: state.searchCriteria
+    });
 
-const mapDispatchToProps = (dispatch) => {
-    return ({
+const mapDispatchToProps = (dispatch) => ({
         fetchFilms: () => dispatch(fetchFilms()),
         sortFilms: sortBy => dispatch(sortFilms(sortBy)),
         setSearchCriteria: searchCriteria => dispatch(setSearchCriteria(searchCriteria)),
     });
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

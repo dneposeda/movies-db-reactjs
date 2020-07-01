@@ -1,25 +1,25 @@
-import React, {FC, useState} from 'react';
-import Btn from "../controls/btn/Btn";
-import {TBtn} from "../../interfaces/interfaces";
+import React, { FC, useState } from 'react';
+import { TBtn } from "../../common/interfaces/interfaces";
+import Button from "../controls/Button/Button";
 
-interface Props {
+type Props = {
     btns: TBtn[];
     cls?: string[],
-    onClick: (filterBy: TBtn['id']) => void,
+    useCallback: (filterBy: TBtn['id']) => void,
 }
 type Component = FC<Props>;
 
-const GropBtns: Component = ({ btns, cls, onClick }) => {
+const ButtonsGroup: Component = ({ btns, cls, useCallback }) => {
     const [activeBtn, setActiveBtn] = useState(btns[0].id);
     return (
         <div className="btn-group" role="group">
             { btns.map(({ id, title }) => (
-                <Btn
+                <Button
                     key={id}
                     title={title}
                     cls={ cls }
                     onClick={() => {
-                        onClick(id)
+                        useCallback(id)
                         setActiveBtn(id);
                     }}
                     active={activeBtn === id}
@@ -29,5 +29,4 @@ const GropBtns: Component = ({ btns, cls, onClick }) => {
     );
 };
 
-
-export default GropBtns;
+export default ButtonsGroup;

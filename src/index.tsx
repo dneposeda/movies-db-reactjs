@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import './styles/styles.scss';
-
-// Import Components
-import ErrorBoundary from './components/errorBoundary/errorBoundary';
-import App from './components/app/App';
 import { store } from './store/store';
-import NotFound from './components/NotFound/NotFound';
+import App from './components/app/App';
+import ErrorBoundary from './components/errorBoundary/errorBoundary';
 import FilmPage from './components/FilmPage/FilmPage';
+import NotFound from './components/NotFound/NotFound';
+import './styles/styles.scss';
 
 ReactDOM.render(
     <Router>

@@ -10,7 +10,7 @@ const films = (state = initialState, action) => {
         case actionTypes.SEARCH_FILMS:
             return action.payload;
         case actionTypes.SORT_FILMS:
-            return orderBy(state, action.payload, 'asc');
+            return orderBy(state, action.payload, 'desc');
         default:
             return state;
     }
