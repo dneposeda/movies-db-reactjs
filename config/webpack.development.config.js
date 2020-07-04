@@ -6,12 +6,14 @@ module.exports = () => {
         mode: 'development',
         output: {
             filename: '[name].js',
+            publicPath: '/'
         },
         devtool: 'source-map',
         devServer: {
             contentBase: path.resolve(__dirname, '../dist'),
             port: 9000,
             hot: true,
+            historyApiFallback: true,
         },
         plugins: [
             new MiniCssExtractPlugin({

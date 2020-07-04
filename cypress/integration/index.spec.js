@@ -6,14 +6,14 @@ context("Actions", () => {
     });
 
     it('Search input', () => {
-        cy.get('[data-search="searchFilms"]')
+        cy.get('[data-movies-search="moviesSearch"]')
             .type('best films best films best films best films', { delay: 50 })
             .should('have.value', 'best films best films best films best films')
             .get('[data-search="searchFilmsSubmit"]')
             .click()
     });
     it('Search by', () => {
-        cy.get('[data-find="findMovie"] .btn.filter-sort__btn')
+        cy.get('[data-movies-search="moviesSearch"] .btn.filter-sort__btn')
             .click({multiple: true})
             .should('have.class', 'active')
     });

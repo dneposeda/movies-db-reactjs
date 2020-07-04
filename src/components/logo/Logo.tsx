@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => (
     <div className="logo">
-        <a href="/" className="logo__link">
-             <span className="logo__text"><span>netflix</span>roulette</span>
-        </a>
+        <Link to={{ pathname: '/'}} className="logo__link">
+            <span className="logo__text"><span>netflix</span>roulette</span>
+        </Link>
     </div>
 )
 

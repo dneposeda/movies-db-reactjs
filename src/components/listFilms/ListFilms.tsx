@@ -1,20 +1,27 @@
 import React, { FC } from 'react';
+import { IFilm } from "../../common/interfaces/Flims.interface";
 import ShortCardFilm from '../shortCardFilm/ShortCardFilm';
-import { IFilm } from "../../interfaces/Flims.interface";
 
-interface Props {
-    readonly films: IFilm[],
+type Props = {
+    films: IFilm[],
 }
 type Component = FC<Props>;
 
-const ListFilms: Component = ({ films }) => (
+const ListFilms: Component = ({ films }) => {
+    const isEmptyList = !films?.length;
+    const filmsList = isEmptyList
+        ? 'Список пуст'
+        : films.map((film: IFilm) => <ShortCardFilm film={ film } key={ film.id } />);
+
+    return (
         <div className="wrapper-main">
             <div className="container">
                 <div className="row">
-                    { films.map((film: IFilm) => <ShortCardFilm film={ film } key={ film.id }/>) }
+                    { filmsList }
                 </div>
             </div>
         </div>
     )
+}
 
 export default ListFilms;

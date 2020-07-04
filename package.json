@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test-coverage": "jest --coverage",
+    "test-updateSnapshots": "jest --updateSnapshot",
     "cypress": "cypress open",
     "node-server": "node server.js",
     "start-build": "cross-env NODE_ENV=production webpack --open --config config/webpack.config.js",
@@ -25,12 +26,16 @@
     "bootstrap": "^4.5.0",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
-    "lodash": "^4.17.15",
+    "lodash.orderby": "^4.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-imageloader": "^3.0.0",
     "react-redux": "^7.2.0",
     "react-router": "^5.1.2",
-    "redux": "^4.0.5"
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -69,12 +74,24 @@
     "webpack-merge": "^4.2.2"
   },
   "jest": {
+    "verbose": true,
     "setupFiles": [
       "./jestsetup.js"
     ],
-    "roots": ["<rootDir>/src/"],
+    "roots": [
+      "<rootDir>/src/"
+    ],
     "snapshotSerializers": [
       "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+      "\\.(gif|ttf|eot|svg|png)$": "identity-obj-proxy"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      ".*.svg",
+      ".*.png"
     ]
   }
 }

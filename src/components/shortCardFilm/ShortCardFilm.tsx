@@ -1,24 +1,28 @@
 import React, {FC} from 'react';
-import { IFilm } from "../../interfaces/Flims.interface";
+import { Link } from "react-router-dom";
+import { IFilm } from "../../common/interfaces/Flims.interface";
+import Image from './../Image/Image';
 
-interface Props {
-    readonly film: IFilm,
+type Props = {
+    film: IFilm,
 }
 type Component = FC<Props>;
 
+const getYear = (date) => new Date(date).getFullYear();
+
 const ShortCartFilm: Component = ({ film }) => (
-    <div className="col-lg-4 col-md-6 col-sm-6">
-        <div className="card-film">
-            <div className="card-film__cover">
-                <img src={ film.img } alt={ film.title } className="card-film__img"/>
-            </div>
-            <div className="card-film__info">
-                <div className="card-film__title">{ film.title }</div>
-                <div className="card-film__year">{ film.year }</div>
-            </div>
-            <div className="card-film__genre">{ film.genre }</div>
+        <div className="col-lg-4 col-md-6 col-sm-6">
+            <Link to={{ pathname: `/film/${film.id}` }} className="card-film-link">
+                <div className="card-film__cover">
+                    <Image src={ film.poster_path } title={ film.poster_path } />
+                </div>
+                <div className="card-film__info">
+                    <div className="card-film__title">{ film.title }</div>
+                    <div className="card-film__year">{ getYear(film.release_date) }</div>
+                </div>
+                <div className="card-film__genre">{ film.genres.join(', ') }</div>
+            </Link>
         </div>
-    </div>
-)
+    )
 
 export default ShortCartFilm;
