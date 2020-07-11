@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import ImageLoader from 'react-imageloader';
 import '../../images/spinner.svg';
 import '../../images/no-img.png';
+import Spinner from '../Spinner/Spinner';
 
 type Props = {
     src: string,
@@ -9,13 +10,11 @@ type Props = {
 }
 type Component = FC<Props>;
 
-const preloader = () => <img src="/images/spinner.svg"/>;
-
 const Image: Component = ({ src, title }) => (
     <ImageLoader
         src={ src }
         wrapper={React.createFactory('div')}
-        preloader={preloader}
+        preloader={Spinner}
         imgProps={{'alt': title, 'className': 'card-film__img'}}
         >
         <img src='/images/no-img.png' alt='no img' className="card-film__img"/>

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { TypeNameBtnGroups, TypeSearch, TypeSort, SearchButtonNames, SortButtonNames } from '../../common/enum/enum'
-import { fetchFilms } from '../../store/actions/action';
-import { sortFilms } from '../../store/actions/sortFilms';
-import { setSearchCriteria } from '../../store/actions/setSearchCriteria';
+import { fetchFilms, sortFilms, setSearchCriteria } from '../../store/actions';
 import MoviesSearch from "../MoviesSearch/MoviesSearch";
 import Filter from "../controls/filter/Filter";
 import Footer from "../footer/Footer";
@@ -16,18 +14,17 @@ type TAppProps = {
     films: IFilm[],
     fetchFilms: () => void,
     sortFilms: (sortBy: string) => void,
-    searchCriteria: string,
-    setSearchCriteria: (searchCriteria: string) => void
+    searchCriteria: TypeSearch,
+    setSearchCriteria: (searchCriteria: TypeSearch) => void
 }
 
 class App extends Component<TAppProps> {
     componentDidMount() {
         this.props.fetchFilms();
-        this.props.setSearchCriteria('title');
     };
 
     render() {
-        const { sortFilms, films, setSearchCriteria } = this.props;
+        const { sortFilms, films, setSearchCriteria, searchCriteria } = this.props;
 
         return (
             <>
@@ -42,6 +39,7 @@ class App extends Component<TAppProps> {
                             <div className="col">
                                 <MoviesSearch
                                     title={TypeNameBtnGroups.SEARCH}
+                                    defaultSearchCriteria={searchCriteria}
                                     btns={[
                                         {
                                             id: TypeSearch.TITLE,

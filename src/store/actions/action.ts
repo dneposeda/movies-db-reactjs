@@ -1,5 +1,4 @@
-import { actionTypes } from "./actionTypes";
-import { handleErrors } from "./common";
+import { actionTypes, setActiveFilm, handleErrors } from ".";
 
 export const URL = 'https://reactjs-cdp.herokuapp.com';
 
@@ -34,10 +33,7 @@ export const fetchFilmData = (id: number) => (
             .then(handleErrors)
             .then(response => response.json())
             .then(response => {
-                dispatch({
-                    type: actionTypes.FETCH_FILM,
-                    payload: response
-                })
+                dispatch(setActiveFilm(response))
             })
             .catch(() => console.log('Что-то пошло не так'))
     )
